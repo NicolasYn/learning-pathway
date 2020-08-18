@@ -1,0 +1,28 @@
+{{>header}}
+
+<style>
+    #formRegister * {
+        margin-bottom:15px;
+    }
+</style>
+
+<div id="formRegister" class="text-center" style="margin-top: 20px;">
+<form class="form-signin" action="/register" method="POST" style="width: 100%; max-width: 330px; padding: 15px; margin: auto;">
+    <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+    <label for="inputName" class="sr-only">Username</label>
+    <input type="text" id="inputName" name="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword"name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Enregistrement</button>
+  </form>
+
+  {{#invalid}}
+    <p class="text-center" style="color: red;">Nom d'utilisateur invalide</p>
+  {{/invalid}}
+
+  {{#alreadyTaken}}
+    <p class="text-center" style="color: red;">Ce nom d'utilisateur est déjà pris</p>
+  {{/alreadyTaken}}
+</div>
+
+{{>footer}}

@@ -1,0 +1,109 @@
+{{>header}}
+
+<div class="container h-100">
+
+    <div class="row">
+        <div class="col text-center">
+            {{#delete}}
+            <div class="alert alert-primary text-center" role="alert">
+                Confirmer pour supprimer votre compte</br> 
+                <a href="/delete/confirm" class="alert-link">Oui</a>
+                <a style="margin-left: 20px;" href="/profile" class="alert-link">Non</a>
+            </div>
+            {{/delete}}
+            {{#invalid_password}}
+                <p style="color: red;">Mot de passe actuel invalide</p>
+            {{/invalid_password}}
+            {{#different_passwords}}
+            <p style="color: red;">Les mots de passe sont différents</p>
+            {{/different_passwords}}
+        </div>
+    </div>
+
+    <div class="row justify-content-around" style="margin-top: 20px;">
+        <div class="col">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifUser">
+                Modifier
+            </button>
+        </div>
+        <div class="col">
+            <h2 style="text-transform: capitalize;">{{username}}</h2>
+        </div>
+        <div class="col flex-grow-0">
+            <a href="/logout" class="btn btn-danger">Déconnexion</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <hr style="border-top: 1px solid rgb(204, 199, 199); width: 50%;">
+        </div>
+    </div>
+
+  <div class="modal fade" id="modifUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier le mot de passe</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="/modify-password" method="POST">
+                <div class="form-group text-center">
+                  <div class="col" style="margin-bottom: 5px;">
+                    <input type="password" name="current_password" class="form-control" placeholder="Mot de passe actuel" required autofocus>
+                  </div>
+                  <div class="col" style="margin-bottom: 5px;">
+                    <input type="password" name="new_password" class="form-control" placeholder="Nouveau mot de passe" required autofocus>
+                  </div>
+                  <div class="col">
+                    <input type="password" name="repeat_password" class="form-control" placeholder="Répéter le nouveau mot de passe" required autofocus>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-secondary" type="submit">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="col">
+            <h2>Contributions</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{#contributions}}
+            <div class="card" style="border: none;">
+                <ul class="list-group list-group-flush">
+                <a href="/learn/{{article}}">
+                  <li class="list-group-item" style="text-transform: capitalize;">
+                    <span style="font-size:200%">{{article}}</span><span style="font-size: 100%; margin-left: 5px;" class="badge badge-info"> {{category}}</span><br>
+                    <span style="margin-left: 20px;">{{pathway}} <img width="10px" height="10px" style="margin-left: 10px;" src="https://pngimage.net/wp-content/uploads/2018/06/horloge-icon-png.png">{{date}}</span>
+                  </li>
+                </a>
+                
+                </ul>
+            </div>
+            {{/contributions}}
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 20px;" >
+        <div class="col text-right">
+            <a href="/delete" class="btn btn-danger">Supprimer mon compte</a>
+        </div>
+    </div>
+</div>
+
+{{> footer}}

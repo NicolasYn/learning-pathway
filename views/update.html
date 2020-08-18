@@ -1,0 +1,126 @@
+{{>header}}
+
+<style>
+    .error-update{
+        color: cornflowerblue;
+    }
+</style>
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        <div class="col text-center">
+            {{#error_name}}
+            <h5 class="error-update">La formation existe déjà</h3>
+            {{/error_name}}
+            
+            {{#error_content}}
+                <h5 class="error-update">Contenu invalide</h3>
+            {{/error_content}}
+            
+            {{#error_content_exists}}
+                <h5 class="error-update">Le contenu existe déjà</h3>
+            {{/error_content_exists}}
+            {{#delete}}
+            <div class="alert alert-primary text-center" role="alert">
+                Confirmer pour supprimer cet article</br> 
+                <a href="/remove/confirm" class="alert-link">Oui</a>
+                <a style="margin-left: 20px;" href="/learn/{{title}}" class="alert-link">Non</a>
+            </div>
+            {{/delete}}
+            {{#delete_pathway}}
+            <div class="alert alert-primary text-center" role="alert">
+                Confirmer pour supprimer cette formation</br> 
+                <a href="/remove-pathway/confirm" class="alert-link">Oui</a>
+                <a style="margin-left: 20px;" href="/learn/{{title}}" class="alert-link">Non</a>
+            </div>
+            {{/delete_pathway}}
+        </div>
+    </div>
+    {{^pathway}}
+    <div class="row">
+        {{#moderator}}
+        <div class="col text-right">
+            <p><a class="btn btn-primary" href="/remove">Supprimer</a></p>
+        </div>
+        {{/moderator}}
+    </div>
+    <div class="row" style="margin-top: 10%;">
+        <div class="col-10 col-sm-5 col-md-6" style="margin-bottom: 20px;">
+            <form action="/modify" method="POST">
+                <div class="form-group text-center">
+                  <label> <h3 class="h3 mb-3 font-weight-normal">Ajouter une formation</h3></label>
+                  <div class="col">
+                    <input type="text" name="title_pathway" class="form-control" placeholder="Titre de la formation" required autofocus>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-secondary" type="submit">
+                </div>
+            </form>
+        </div>
+        {{#moderator}}
+        <div class="col-10 col-sm-5 col-md-6">
+            <form action="/modify-title" method="POST">
+                <div class="form-group text-center">
+                  <label> <h3 class="h3 mb-3 font-weight-normal">Modifier le titre de l'article</h3></label>
+                  <div class="col">
+                    <input type="text" name="new_title" class="form-control" placeholder="Titre de l'article" required autofocus>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-secondary" type="submit">
+                </div>
+            </form>
+        </div>
+        {{/moderator}}
+    </div>
+    {{/pathway}}
+
+{{#pathway}}
+    <div class="row" style="margin-top: 10px;">
+        <div class="col text-center">
+            <h2> Modification de {{name_pathway}}</h2>
+        </div>
+        {{#moderator}}
+        <div class="col flex-grow-0">
+            <p><a class="btn btn-primary" href="/remove-pathway">Supprimer</a></p>
+        </div>
+        {{/moderator}}
+    </div>
+    <div class="row">
+        <div class="col-9 col-sm-10" style="margin-bottom: 40px; word-break: break-word;">
+            <ul>
+                {{#pathway_content}}
+                <li style="list-style-type: none;">{{text}} <a style="color: rgb(148, 138, 138)" href={{link}}>{{link}}</a></li>
+                {{/pathway_content}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-9 col-sm-5" style="margin-bottom: 40px;">
+            <h3>Ajouter un nouveau contenu</h3>
+            <form class="form" action="/modify-pathway" method="POST" style="margin-top: 34px;">
+                <input class="form-control mr-sm-2" type="text" placeholder="Description" name="text" required>
+                <input class="form-control mr-sm-2" type="url" placeholder="http://example.com" name="link" required><br>
+                <input class="btn btn-info my-2 my-sm-0" type="submit" value="Ajouter">
+            </form>
+        </div>
+        <div class="col-9 col-sm-5">
+            <h3>Modifier un contenu existant</h3>
+            <form class="form" action="/modify-content" method="POST">
+                <select name="precedent_content" style="max-width: 100%;">
+                    {{#pathway_content}}
+                        <option value="{{text}}">{{text}}</option>
+                    {{/pathway_content}}
+                </select>
+                <input class="form-control mr-sm-2" type="text" placeholder="Description" name="text" required>
+                <input class="form-control mr-sm-2" type="url" placeholder="http://example.com" name="link" required><br>
+                <input class="btn btn-info my-2 my-sm-0" type="submit" value="Modifier">
+            </form>
+        </div>
+    </div>
+    {{/pathway}}
+</div>
+
+
+{{>footer}}

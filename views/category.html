@@ -1,0 +1,31 @@
+{{>header}}
+
+<div class="container" style="border: #c1bbbb solid;">
+    <div class="row text-center" style="margin-top: 20px;">
+        <div class="col">
+            <h1>{{name}}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <hr style="border-top: 1px solid rgb(204, 199, 199); width: 50%;">
+      </div>
+
+    {{#articles}}
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="col">
+            <div class="card" style="width: 18rem; border: none; margin-left: 15%;">
+                <ul class="list-group list-group-flush">
+                
+                <a href="/learn/{{.}}">
+                  <li class="list-group-item" style="text-transform: capitalize;">{{.}}</li>
+                </a>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{/articles}}
+</div>
+
+{{>footer}}

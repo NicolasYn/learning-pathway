@@ -1,0 +1,211 @@
+{{> header}}
+
+<style>
+    .banner {
+        background: linear-gradient(90deg, #62A0F4, #9281D4);
+    }
+
+    #categories img {
+        max-width: 120px;
+        max-height: 120px;
+        margin-top: 10px;
+    }
+
+    #horinzontalSection hr {
+        border: 3px solid;
+        width: 20%;
+        margin: 0;
+        margin-top: 5px;
+        border-color: #051542;
+    }
+
+    #square {
+        height: 15px;
+        width: 15px;
+        background: #ff5757;
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg); /* Internet Explorer */
+        -moz-transform: rotate(45deg); /* Firefox */
+        -webkit-transform: rotate(45deg); /* Safari et Chrome */
+        -o-transform: rotate(45deg); /* Opera */
+    }
+
+</style>
+
+<div class="container-fluid">
+    <div class="row banner">
+    <div class="col">
+    <div class="row" style="margin: 0px 20px 20px 20px; padding-bottom: 50px;">
+        <div class="col" style="margin-top: 20px;">
+            <div class="row">
+                <h3 style="color: white; text-align: center;"><b>Trouve les meilleurs cours et
+                        exercices grâce à la communauté</b></h3>
+            </div>
+            <div class="row">
+                <form style="margin-top: 50px; margin-left: 10%; width:80%" class="form" action="/learn">
+                    <input class="form-control" type="text" placeholder="Rechercher" name="title" aria-label="Search"
+                        value="{{query}}">
+                </form>
+            </div>
+        </div>
+        <div class="col" style="margin-top: 20px;">
+            <div class="row justify-content-around">
+                <div class="col-9 col-md-5 ml-3">
+                    <a href="/create" class="btn">
+                        <span><img style="border-radius: 80%; max-width: 150px; max-height: 150px; border: 3px solid;"
+                                src="https://img.icons8.com/cotton/2x/create-new.png">
+                            <br/><h4 style="color: white;">Créer</h4></span>
+                    </a>
+                </div>
+                <div class="col-9 col-md-5 ml-3">
+                    <a href="/learn" class="btn">
+                        <span><img style="border-radius: 80%; max-width: 150px; max-height: 150px; border: 3px solid;"
+                                src="https://icons-for-free.com/iconfiles/png/512/education+learn+school+study+icon-1320166053894805001.png">
+                                <br/><h4 style="color: white;">Apprendre</h4></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: 10px;">
+        <h2 style="color: #051542;">Catégorie</h2>
+    </div>
+    <div class="row justify-content-center" id="horinzontalSection">
+        <hr><div id="square"></div><hr>
+    </div>
+    <div class="row justify-content-center" style="margin-top: 10px;">
+        <h5 style="color: #051542;">Sélectionne une catégorie</h5>
+    </div>
+    
+    <div id="categories" class="row row-cols-2 row-cols-md-3" style="margin-top: 20px;">
+        <div class="col mb-4">
+            <a href="/category/informatique">
+                <div class="card rounded-circle align-items-center">
+                    <img src="https://cdn.iconscout.com/icon/free/png-512/computer-science-1828817-1551380.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Informatique</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col mb-4">
+            <a href="/category/mathématiques">
+                <div class="card rounded-circle align-items-center">
+                    <img src="https://static.thenounproject.com/png/186400-200.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Mathématiques</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col mb-4">
+            <a href="/category/physique">
+                <div class="card rounded-circle align-items-center">
+                    <img src="https://icons.iconarchive.com/icons/icons8/windows-8/512/Science-Physics-icon.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Physique</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col mb-4">
+            <a href="/category/biologie">
+                <div class="card rounded-circle align-items-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSLcrvQ_VeZqTgJwZqlKSoAZZXLBBOgYP2xf9flFNjCvvcVLBxd&usqp=CAU" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Biologie</h5>
+                    </div>
+                </div>
+            </a>
+      </div>
+      <div class="col mb-4">
+        <a href="/category/économie">
+            <div class="card rounded-circle align-items-center">
+                <img src="https://static.thenounproject.com/png/1102001-200.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Économie</h5>
+                </div>
+            </div>
+        </a>
+      </div>
+      <div class="col mb-4">
+        <a href="/category/">
+            <div class="card rounded-circle align-items-center">
+                <img src="https://brilliantscholars.files.wordpress.com/2013/02/2-dice-icon-svg.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Aléatoire</h5>
+                </div>
+            </div>
+        </a>
+      </div>    
+    </div>
+
+
+    <div class="row justify-content-center">
+        <h2 style="color: #051542;">Articles Populaires</h2>
+    </div>
+    <div class="row justify-content-center" id="horinzontalSection">
+        <hr><div id="square"></div><hr>
+    </div>
+    <div class="row justify-content-center" style="margin-top: 10px;">
+        <h5 style="color: #051542;">Sélectionne un article</h5>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col">
+            <div class="row row-cols-2 row-cols-md-4 justify-content-around">
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                        <a href="/learn/machine_learning"><h5 class="card-title">Machine Learning</h5></a>
+                        <p class="card-text">Le Machine learning où Apprentissage Automatique est un domaine de l'Intelligence Artificielle</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                        <a href="/learn/créer_un_site_web"><h5 class="card-title">Créer un site web</h5></a>
+                        <p class="card-text">Apprendre à créer son site web grâce aux outils à notre diposition</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                        <a href="/learn/introduction_économie"><h5 class="card-title">Introduction Économie</h5></a>
+                        <p class="card-text">Ressources basiques pour découvrir l'économie</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="row banner align-items-center">
+            <div class="col text-center" style="margin-top: 10px;">
+                <a href="/rules">
+                <span><img src="https://i.pinimg.com/originals/5b/fa/58/5bfa5833ff48263731b4dc4f7b2e8824.png" width="80px" height="80px">
+                <br/><h6 style="color: white;">Règles</h6></span>
+                </a>
+            </div>
+            <div class="col text-center">
+                <a href="/rules">
+                    <span><img src="https://dma.org.uk/uploads/articles/circle-icons-mail1.png" width="80px" height="80px">
+                    <br/><h6 style="color: white;">Contact</h6></span>
+                    </a>
+            </div>
+            <div class="col text-center">
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                    <span><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                    <br/> <h6 style="color: white;">Licence</h6></span> 
+                </a>
+            </div>
+    </div>
+</div>
+
+
+{{> footer}}

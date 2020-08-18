@@ -1,0 +1,37 @@
+{{>header}}
+
+<div class="container">
+    <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="col">
+            {{#all}}
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                {{#history}}
+                    <li class="list-group-item">
+                        {{#add}} 
+                        <h5 style="text-align: center;">Ajout de contenu
+                            <span style="float: right; font-size: small;">{{user}}<br><img width="10px" height="10px" src="https://pngimage.net/wp-content/uploads/2018/06/horloge-icon-png.png">{{date}}</span>
+                        </h5> 
+                        <h5>Nouveau contenu</h5>
+                        {{/add}}
+                        {{^add}}
+                        <h5 style="text-align: center;">Modification de contenu
+                            <span style="float: right; font-size: small;">{{user}}<br><img width="10px" height="10px" src="https://pngimage.net/wp-content/uploads/2018/06/horloge-icon-png.png">{{date}}</span>
+                        </h5>
+                        <h5>Avant</h5>
+                        <p>Description: {{before.text}}</p>
+                        <p>Lien: {{before.link}}</p>
+                        <h5>Après</h5>
+                        {{/add}}
+                        <p>Description: {{after.text}}</p>
+                        <p>Lien: {{after.link}}</p>
+                    </li>
+                {{/history}}
+                </ul>
+            </div>
+            {{/all}}
+        </div>
+    </div>
+
+</div>
+{{> footer}}

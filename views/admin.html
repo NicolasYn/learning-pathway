@@ -1,0 +1,65 @@
+{{>header}}
+
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col text-center">
+            <h3>Derniers ajouts</h3>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col">
+            <h6>Derniers utilisateurs inscrits</h6>
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                {{#users}}
+                  <li class="list-group-item">{{username}}</li>
+                {{/users}}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col">
+            <h6>Derniers articles ajoutés</h6>
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                {{#articles}}
+                    <li class="list-group-item">{{.}}</li>
+                {{/articles}}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col text-center">
+            <h3>Incidents</h3>        
+        </div>
+    </div>
+    {{#user_not_exists}}
+    <div class="row">
+        <div class="col text-center">
+            <h5 style="color: red;">L'utilisateur n'existe pas</h5>
+        </div>
+    </div>
+    {{/user_not_exists}}
+    <div class="row" style="margin-top: 10px; margin-bottom: 20px;">
+        <div class="col">
+            <form action="/admin-ban" method="POST">
+                <div class="form-group text-center">
+                    <label> <h6>Bannir un utilisateur</h6></label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-secondary" type="submit" value="Bannir">
+                </div>
+            </form>    
+        </div>
+
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+{{>footer}}

@@ -1,0 +1,31 @@
+{{>header}}
+
+<style>
+    #formLogin * {
+        margin-bottom:10px;
+    }
+</style>
+
+{{#auth_required}}
+    <p class="text-center" style="color: red; margin-top: 20px;">
+      Connectez-vous pour réaliser cette action
+    </p>
+{{/auth_required}}
+
+<div id="formLogin" class="text-center" style="margin-top: 20px;">
+<form class="form-signin" action="/login" method="POST" style="width: 100%; max-width: 330px; padding: 15px; margin: auto;">
+    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <label for="inputName" class="sr-only">Username</label>
+    <input type="text" id="inputName" name="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword"name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+    <a href="register" >Créer un compte</a>
+  </form>
+</div>
+
+{{#error}}
+    <p class="text-center" style="color: red;">Identifiant ou mot de passe incorrect</p>
+{{/error}}
+
+{{> footer}}
